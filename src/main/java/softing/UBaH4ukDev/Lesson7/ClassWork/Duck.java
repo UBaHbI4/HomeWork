@@ -1,4 +1,4 @@
-package softing.UBaH4ukDev.Lesson7;
+package softing.UBaH4ukDev.Lesson7.ClassWork;
 
 public class Duck implements Swimming, Swimming.Diving, Swimming.Diving.DeepDiving {
 
