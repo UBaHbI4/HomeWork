@@ -100,7 +100,7 @@ public class ClassWork8 { public static void main(String[] args) {
     }
 
     private static void fisFosExample() throws IOException {
-//        InputStream in;
+        InputStream in;
 //        OutputStream out;
 //        byte[] bytes ={'H', 'e', 'l', 'l', 'o'};
         String s = "Hello world!!!\n";
