@@ -1,9 +1,6 @@
 package softing.UBaH4ukDev.Lesson9;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 /****
  Project HomeWork
@@ -24,6 +21,60 @@ public class ClassWork9 {
 
         try {
             statement = connection.createStatement();
+            statement.execute(
+                    "CREATE TABLE IF NOT EXISTS Students " +
+                            "(" +
+                            "StudID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
+                            "Name TEXT NOT NULL," +
+                            "GroupName TEXT NOT NULL," +
+                            "Score INTEGER NOT NULL" +
+                            ");");
+
+
+            //Очистим таблицу и занесем 5 записей
+            System.out.println("Удалено: " + statement.executeUpdate("DELETE FROM Students;") + " записей");
+            statement.executeUpdate("INSERT INTO Students (Name, GroupName, Score) VALUES ('Иван', '1', 150);");
+            statement.executeUpdate("INSERT INTO Students (Name, GroupName, Score) VALUES ('Сергей', '2', 250);");
+            statement.executeUpdate("INSERT INTO Students (Name, GroupName, Score) VALUES ('Николай', '2', 350);");
+            statement.executeUpdate("INSERT INTO Students (Name, GroupName, Score) VALUES ('Александр', '3', 400);");
+            statement.executeUpdate("INSERT INTO Students (Name, GroupName, Score) VALUES ('Дмитрий', '4', 100);");
+
+            //Выведем внесенные записи
+            System.out.println("В таблице Students есть следующие записи:");
+            ResultSet rs = statement.executeQuery("SELECT Name, Score FROM Students;");
+            while (rs.next()) {
+                System.out.println("Student " + rs.getString("Name") + " score: " + rs.getInt(2));
+            }
+            System.out.println();
+
+            //Удалим одну запись
+            System.out.println("Удалим запись с именем Николай");
+            System.out.println("Удалено: " + statement.executeUpdate("DELETE FROM Students WHERE Name = 'Николай';") + " записей.");
+
+            System.out.println();
+
+            //Выведем внесенные записи
+            System.out.println("В таблице Students есть следующие записи:");
+            rs = statement.executeQuery("SELECT Name, Score FROM Students;");
+            while (rs.next()) {
+                System.out.println("Student " + rs.getString("Name") + " score: " + rs.getInt(2));
+            }
+
+            System.out.println();
+
+            //Обновим одну запись, изменим Score у Ивана
+            System.out.println("Обновим одну запись, изменим Score у Ивана");
+            System.out.println("Обновлено: " + statement.executeUpdate("UPDATE Students SET Score = 500 WHERE Name = 'Иван';") + " записей.");
+
+            System.out.println();
+
+            //Выведем внесенные записи
+            System.out.println("В таблице Students есть следующие записи:");
+            rs = statement.executeQuery("SELECT Name, Score FROM Students;");
+            while (rs.next()) {
+                System.out.println("Student " + rs.getString("Name") + " score: " + rs.getInt(2));
+            }
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
