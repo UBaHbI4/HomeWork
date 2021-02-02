@@ -14,6 +14,7 @@ import java.sql.*;
 public class ClassWork9 {
     private static Connection connection;
     private static Statement statement;
+    private static PreparedStatement ps;
 
     public static void main(String[] args) {
         //Вызываем метод для соединения с БД
@@ -53,7 +54,7 @@ public class ClassWork9 {
 
             System.out.println();
 
-            //Выведем внесенные записи
+            //Выведем внесенные
             System.out.println("В таблице Students есть следующие записи:");
             rs = statement.executeQuery("SELECT Name, Score FROM Students;");
             while (rs.next()) {
@@ -69,6 +70,26 @@ public class ClassWork9 {
             System.out.println();
 
             //Выведем внесенные записи
+            System.out.println("В таблице Students есть следующие записи:");
+            rs = statement.executeQuery("SELECT Name, Score FROM Students;");
+            while (rs.next()) {
+                System.out.println("Student " + rs.getString("Name") + " score: " + rs.getInt(2));
+            }
+
+
+            System.out.println();
+            //Добавим данные через подготовленный запрос с передачей параметров
+            System.out.println("Добавим запись через prepareStatement");
+            ps = connection.prepareStatement("INSERT INTO Students (Name, GroupName, Score) VALUES(?, ?, ?);");
+            ps.setString(1, "Михаил");
+            ps.setString(2, "100");
+            ps.setInt(3, 256);
+            ps.executeUpdate();
+
+            System.out.println();
+
+
+            //Выведем записи
             System.out.println("В таблице Students есть следующие записи:");
             rs = statement.executeQuery("SELECT Name, Score FROM Students;");
             while (rs.next()) {
