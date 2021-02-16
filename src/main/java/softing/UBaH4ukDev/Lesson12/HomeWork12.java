@@ -14,7 +14,7 @@ import java.util.concurrent.*;
  v1.0
  */
 public class HomeWork12 {
-    static final int SIZE = 10;//10_000_000;
+    static final int SIZE = 10_000_00;//10_000_000;
     /*
         При размере массива до 20, выводится содержимое массивов, для того чтобы убедиться, что содержимое массивов одинаково
     после выполнения методов.
@@ -58,6 +58,20 @@ public class HomeWork12 {
 
     }
 
+
+
+    //Метод для вычисления по формуле значений для всем элементов массива
+    private static boolean solution(float[] targetArray, int startIndex) {
+        try {
+            for (int i = 0; i < HALF; i++) {
+                targetArray[i] = (float)(targetArray[i] * Math.sin(0.2f + (startIndex + i) / 5) * Math.cos(0.2f + (startIndex + i) / 5) * Math.cos(0.4f + (startIndex + i) / 2));
+            }
+            return true;
+        } catch (Exception err) {
+            return false;
+        }
+    }
+
     //Метод для преобразования элементов массива путем разбиения на два массива, паралельного пересчета
     //одновременно элементов двух массивов
     //и склейки результатов в один массив обратно
@@ -73,40 +87,37 @@ public class HomeWork12 {
 
         ExecutorService service = Executors.newFixedThreadPool(2);
 
-        Future<Boolean> future1 = service.submit(new Callable<Boolean>() {
-            @Override
-            public Boolean call() {
-                try {
-                    for (int i = 0; i < HALF; i++) {
-                        a1[i] = (float)(a1[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
-                    }
-                    return true;
-                } catch (Exception err) {
-                    System.out.println(err.getMessage());
-                    return false;
-                }
-            }
-        });
+//        Future<Boolean> future1 = service.submit(new Callable<Boolean>() {
+//            @Override
+//            public Boolean call() {
+//                try {
+//                    solution(a1, 0);
+//                    return true;
+//                } catch (Exception err) {
+//                    System.out.println(err.getMessage());
+//                    return false;
+//                }
+//            }
+//        });
 
-        Future<Boolean> future2 = service.submit(new Callable<Boolean>() {
-            @Override
-            public Boolean call() {
-                try {
-                    for (int i = 0; i < HALF; i++) {
-                        a2[i] = (float)(a2[i] * Math.sin(0.2f + (HALF + i) / 5) * Math.cos(0.2f + (HALF + i) / 5) * Math.cos(0.4f + (HALF + i) / 2));
-                    }
-                    return true;
-                } catch (Exception err) {
-                    System.out.println(err.getMessage());
-                    return false;
-                }
+        service.submit(() -> {return solution(a1, 0);}).get();
+        service.submit(() -> {return solution(a2, HALF);}).get();
 
-            }
-        });
+//        Future<Boolean> future2 = service.submit(new Callable<Boolean>() {
+//            @Override
+//            public Boolean call() {
+//                try {
+//                    solution(a2, HALF);
+//                    return true;
+//                } catch (Exception err) {
+//                    System.out.println(err.getMessage());
+//                    return false;
+//                }
+//
+//            }
+//        });
 
-        if (! (future1.get() && future2.get())) {
-            System.out.println("Не удалось выполнить один из методов");
-        }
+
         service.shutdownNow();
 
         System.arraycopy(a1, 0, arr, 0, HALF);
