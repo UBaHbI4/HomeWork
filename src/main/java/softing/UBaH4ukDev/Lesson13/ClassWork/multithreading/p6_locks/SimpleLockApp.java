@@ -1,4 +1,4 @@
-package ru.geekbrains.p6_locks;
+package softing.UBaH4ukDev.Lesson13.ClassWork.multithreading.p6_locks;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;

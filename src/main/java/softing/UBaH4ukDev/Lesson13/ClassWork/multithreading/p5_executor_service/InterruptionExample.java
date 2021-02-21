@@ -1,4 +1,4 @@
-package ru.geekbrains.p5_executor_service;
+package softing.UBaH4ukDev.Lesson13.ClassWork.multithreading.p5_executor_service;
 
 public class InterruptionExample {
     public static void main(String[] args) throws InterruptedException {

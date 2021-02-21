@@ -1,4 +1,4 @@
-package ru.geekbrains.p7_concurrency;
+package softing.UBaH4ukDev.Lesson13.ClassWork.multithreading.p7_concurrency;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
