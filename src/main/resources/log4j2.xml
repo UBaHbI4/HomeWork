@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Configuration xmlns="http://logging.apache.org/log4j/2.0/config">
+    <Properties>
+        <Property name="basePath">logs</Property>
+    </Properties>
+
+    <Appenders>
+        <File name="FILE1" fileName="${basePath}/logfile1.log" append="true">
+            <PatternLayout pattern="%-5p %d{yyyy-MM-dd HH:mm:ss} [%t] %C (%F:%L) - %m%n" />
+        </File>
+
+<!--        <File name="FILE2" fileName="${basePath}/logfile2.log" append="true">-->
+<!--            <PatternLayout pattern="%-5p %d{yyyy-MM-dd HH:mm:ss} [%t] %C (%F:%L) - %m%n" />-->
+<!--        </File>-->
+
+        <Console name="STDOUT" target="SYSTEM_OUT" >
+            <PatternLayout pattern="%highlight{%-5p %d{yyyy-MM-dd HH:mm:ss}}{FATAL=green blink, ERROR=red, WARN=yellow bold, INFO=CYAN, DEBUG=green bold, TRACE=blue}
+             %highlight{[%t]}{FATAL=red, ERROR=red, WARN=red, INFO=red, DEBUG=red, TRACE=red}  %C:%L (%F:%L) - %m%n" disableAnsi="false"   />
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <Root level="debug">
+            <AppenderRef ref="STDOUT" />
+            <AppenderRef ref="FILE1" />
+        </Root>
+        <Logger name="lesson14.classwork.LoggingApp" level="debug">
+            <AppenderRef ref="FILE2" />
+        </Logger>
+    </Loggers>
+</Configuration>
