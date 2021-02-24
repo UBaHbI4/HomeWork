@@ -4,7 +4,7 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import softing.UBaH4ukDev.Lesson14.Calculator;
+import softing.UBaH4ukDev.Lesson14.ClassWork.Calculator;
 
 /****
  Project HomeWork

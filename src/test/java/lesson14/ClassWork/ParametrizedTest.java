@@ -5,11 +5,11 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import softing.UBaH4ukDev.Lesson14.Calculator;
+import softing.UBaH4ukDev.Lesson14.ClassWork.Calculator;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.function.IntPredicate;
+
 /****
  Project HomeWork
  Package lesson14.ClassWork
