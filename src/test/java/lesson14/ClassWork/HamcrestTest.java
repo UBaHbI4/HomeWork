@@ -19,7 +19,7 @@ public class HamcrestTest {
 //        String b = "  Java  ";
 //        MatcherAssert.assertThat(a, Matchers.equalToIgnoringWhiteSpace(b));
 
-        MatcherAssert.assertThat(new Integer[]{1, 2, 3, 4, 5, 6, 7}, Matchers.arrayContainingInAnyOrder(4, 3, 1, 2, 5));
+        MatcherAssert.assertThat(new Integer[]{1, 2, 3, 4, 5, 6, 7}, Matchers.arrayContainingInAnyOrder(4, 3, 1, 2, 5, 6, 7));
 
 //        MatcherAssert.assertThat(a, Matchers.equalToIgnoringWhiteSpace());
     }

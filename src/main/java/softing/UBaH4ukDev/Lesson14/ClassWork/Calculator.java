@@ -1,4 +1,4 @@
-package softing.UBaH4ukDev.Lesson14;
+package softing.UBaH4ukDev.Lesson14.ClassWork;
 
 /****
  Project HomeWork
