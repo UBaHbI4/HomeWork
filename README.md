@@ -1,2 +1,2 @@
-# HomeWork
-Репозиторий для домашних работ по курсу Java Core для Android
+#Java Core для Android
+Репозиторий для домашних и классных работ по курсу Java Core для Android
